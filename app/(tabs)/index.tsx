@@ -1,6 +1,8 @@
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, Text } from "react-native";
+import TodoItem from '../../components/TodoItem';
 
-const USERS_DATA = [
+
+const TODOS = [
   { id: '1', nom: 'Alice Martin', email: 'alice.martin@email.com' },
   { id: '2', nom: 'Benjamin Dubois', email: 'ben.dubois@email.com' },
   { id: '3', nom: 'Chloé Garcia', email: 'chloe.g@email.com' },
@@ -11,8 +13,14 @@ const USERS_DATA = [
 
 export default function HomeScreen() {
   return (
-      <ScrollView>
-        { /* Render the list of users using the UserItem component */ }
+      <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>My Todo List</Text>
+
+      {TODOS.map((todo) => (
+        <TodoItem key={todo.id} text={todo.nom} />
+
+      ))}
+         {/* Render the list of users using the UserItem component */ }
       </ScrollView>
   );
 }
